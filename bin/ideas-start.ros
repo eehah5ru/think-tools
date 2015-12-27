@@ -1,0 +1,22 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(defpackage :ros.script.ideas-start.3660166049
+  (:use :cl))
+(in-package :ros.script.ideas-start.3660166049)
+
+(load #p"../ideas.asd")
+
+(ql:quickload :ideas :silent t)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+
+  (handler-case (lucerne:start ideas:app :port 8000)
+    (sb-sys:interactive-interrupt ()
+      (progn
+	(format *error-output* "Stopping server...")
+	(lucerne:stop ideas:app)
+	(format *error-output* "done~%")))))

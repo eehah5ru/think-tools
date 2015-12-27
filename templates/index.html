@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="row ideas">
+  <div class="columns small-6 text-center idea">
+    {{ first-idea}}
+  </div>
+  <div class="columns small-6 text-center idea">
+    {{ second-idea}}
+  </div>
+</section>
+<form method="post">
+  <section class="row collapse new-idea">
+    <div class="column small-10">
+      <input name="new-idea" placeholder="new idea"/>
+    </div>
+    <div class="column small-2">
+      <button class="button postfix" type="submit" name="create">Create</a>      
+    </div>
+  </section>
+</form>
+{% endblock %}
+
